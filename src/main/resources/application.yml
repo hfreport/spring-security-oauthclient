@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: client-user
+  redis:
+    password: hoolink@123
+    port: 6379
+    host: dev-redis.hoolink.com
+    database: 3
+
+server:
+  port: 6101
+
+
+security:
+  oauth2:
+    client:
+      client-id: third-app
+      client-secret: user-secret-8888
+      user-authorization-uri: http://localhost:8979/oauth/authorize
+      access-token-uri: http://localhost:8979/oauth/token
+# jwt方式
+#    resource:
+#      jwt:
+#        key-uri: http://localhost:6001/oauth/token_key
+#        key-value: dev
+# redis方式
+    resource:
+      id: user-client-2
+      user-info-uri: user-info-2
+    authorization:
+      check-token-access: http://localhost:8979/oauth/check_token
+
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
+    org.springframework.security: debug
+    org.springframework.security.oauth2: debug
+    org.springframework.boot.autoconfigure: debug
